@@ -1,0 +1,87 @@
+﻿@page "/"
+@using Blazorise;
+@using Blazorise.DataGrid;
+<Tabs SelectedTab="@selectedTab" SelectedTabChanged="@OnSelectedTabChanged">
+	<Items>
+		<Tab Name="home">Home</Tab>
+		<Tab Name="profile">Profile</Tab>
+		<Tab Name="messages">Messages</Tab>
+		<Tab Name="settings">Settings</Tab>
+	</Items>
+	<Content>
+		<TabPanel Name="home">
+			
+				<DataGrid TItem="TestObject"
+					  Data="@Testing"
+					  ShowPager
+					  PageSize="10"
+					  Sortable
+					  Striped
+					  Bordered Resizable Responsive>
+					<DataGridColumns>
+						<DataGridColumn TItem="TestObject" Field="test1" Caption="test1" />
+						<DataGridColumn TItem="TestObject" Field="test2" Caption="test2" />
+						<DataGridColumn TItem="TestObject" Field="test3" Caption="test3" />
+					</DataGridColumns>
+				</DataGrid>
+			
+		</TabPanel>
+		<TabPanel Name="profile">
+			Content for profile.
+		</TabPanel>
+		<TabPanel Name="messages">
+		
+				<DataGrid TItem="TestObject"
+					  Data="@Testing2"
+					  ShowPager
+					  PageSize="10"
+					  Sortable
+					  Striped
+					  Bordered Resizable Responsive>
+					<DataGridColumns>
+						<DataGridColumn TItem="TestObject" Field="test1" Caption="test1" />
+						<DataGridColumn TItem="TestObject" Field="test2" Caption="test2" />
+						<DataGridColumn TItem="TestObject" Field="test3" Caption="test3" />
+					</DataGridColumns>
+				</DataGrid>
+			
+		</TabPanel>
+		<TabPanel Name="settings">
+			Content for settings.
+		</TabPanel>
+	</Content>
+</Tabs>
+@code {
+	string selectedTab = "profile";
+	new List<TestObject> Testing;
+	new List<TestObject> Testing2;
+	
+
+	private void OnSelectedTabChanged(string name)
+	{
+		//try {
+		//	switch (name)
+		//	{
+		//		case "home":
+		//			//Testing = new List<TestObject>() { new TestObject() { test1 = "test", test2 = "testing2", test3 = "testing3" } };
+		//			//Testing.Add(new TestObject() { test1 = "tes1", test2 = "testin42", test3 = "testin4g3" });
+		//			break;
+		//		case "messages":
+		//			//Task.WaitAll(DataRefresh6Mth());
+		//			break;
+		//		case "12Mths":
+		//			//   Task.WaitAll(DataRefresh12Mth());
+		//			break;
+
+		//	}
+		//} catch (Exception ex) { Console.WriteLine("Error " + ex.Message ); }
+	}
+
+	public class TestObject
+	{
+		public string test1 { get; set; }
+		public string test2 { get; set; }
+		public string test3 { get; set; }
+	}
+
+}
